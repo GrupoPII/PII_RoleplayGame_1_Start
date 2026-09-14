@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 
-public class Enano
+public class Enano //holasoy vale haciendo un cambio
 {
     public string Nombre {get; set;}
     public int VidaActual{get; set;}
