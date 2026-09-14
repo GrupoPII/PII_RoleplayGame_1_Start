@@ -1,27 +1,44 @@
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 
 public class Enano
 {
     public string Nombre {get; set;}
-    public int VidaActual{get; set;}
-    public List<dynamic> Elementos {get; set;}
+    public int Vida {get; set;}
     public int Fuerza {get; set;}
     public int Resistencia {get; set;}
-    public Enano(string nombre, int vidaActual, int fuerza, int resistencia)
+    public List <IElemento> Elementos = new List<IElemento>():
+    public Enano(string nombre, int vida, int fuerza, int resistencia)
     {
-        Nombre=nombre;
-        VidaActual=vidaActual;
-        Fuerza=fuerza;
-        Resistencia=resistencia;
-        Elementos= new List<dynamic>();
+        this.Nombre = nombre;
+        this.Vida = vida;
+        this.Fuerza = fuerza;
+        this.Resistencia = resistencia;   
     }
-    public void AgregarElemento(Escudo escudo)
+
+    public void AgregarElemento(IElemento elemento)
     {
-        Elementos.Add(escudo);
+        this.Elementos.Add(elemento);
     }
-    public void AgregarElemento(Martillo martillo)
+    public void RemoveElemento(IElemento elemento)
     {
-        Elementos.Add(martillo);
+        this.Elementos.Remove(elemento);
     }
+    public void CambiarElemento( IElemento anterior, IElemento nuevo )
+    {
+        
+    }
+    public int AtaqueTotal()
+    {
+        
+    }
+        public int DefensaTotal()
+    {
+        
+    }
+    public void Atacar(Ipersonaje, objetivo)
+    {
+        
+    } 
 }
