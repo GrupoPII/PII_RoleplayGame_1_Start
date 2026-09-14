@@ -14,7 +14,7 @@ public class Elfo : IPersonaje
     public Elfo(string nombre, int vidaInicial, int vidaActual, int fuerza, bool ayudarAOtros, int resistencia)
     {
         Nombre=nombre;
-        VidaInicial= VidaInicial;
+        VidaInicial= vidaInicial;
         VidaActual=vidaActual;
         Fuerza=fuerza;
         AyudarAOtros=ayudarAOtros;

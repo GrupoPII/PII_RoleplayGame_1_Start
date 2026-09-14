@@ -9,10 +9,11 @@ public class Mago : IPersonaje
     public List<IElemento> Elementos {get; set;}
     public int Fuerza {get; set;}
     public int PoderMagico {get; set;}
-    public Mago(string nombre, int vidaActual, int fuerza, int poderMagico)
+    public Mago(string nombre, int vidaInicial, int vidaActual, int fuerza, int poderMagico)
     {
         Nombre=nombre;
-        Vida=vidaActual;
+        VidaInicial=vidaInicial;
+        VidaActual= vidaActual;
         Fuerza=fuerza;
         PoderMagico=poderMagico;
         Elementos= new List<IElemento>();
