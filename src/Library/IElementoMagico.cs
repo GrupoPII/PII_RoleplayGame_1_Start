@@ -1,4 +1,4 @@
-public interface IElemento
+public interface IElementoMagico
 {
     int ValorAtaque();
     int ValorDefensa();

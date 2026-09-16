@@ -1,6 +1,6 @@
 using System.Reflection.Metadata.Ecma335;
 
-public class Espada
+public class Espada: IElemento
 {
     public string Name {get; set;}
     public int Ataque {get; set;}
