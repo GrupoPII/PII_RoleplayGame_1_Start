@@ -14,7 +14,7 @@ public interface IDefensa : IElemento
     int ValorDefensa { get; set; }
 }
 
-
+//valor ataq y valor def van separados 
 
 public interface IElementoMagico : IElemento
 {
