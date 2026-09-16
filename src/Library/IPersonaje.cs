@@ -12,7 +12,7 @@ public interface IPersonaje
     void AgregarElemento( IElemento elemento);
     void QuitarElemento (IElemento elemento);
     void CambiarElemento (IElemento elemento);
-    int AtaqueTota();
+    int AtaqueTotal();
     int DefensaTotal();
     void Atacar(IPersonaje personaje);
     void Curar();
