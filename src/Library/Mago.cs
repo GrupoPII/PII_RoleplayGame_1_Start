@@ -7,6 +7,7 @@ public class Mago : IPersonaje
     public int VidaInicial{get; set;}
     public int VidaActual {get; set;}
     public List<IElemento> Elementos {get; set;}
+    public List <IElementoMagico> ElementosMagicos {get; set;}
     public int Fuerza {get; set;}
     public int PoderMagico {get; set;}
     public Mago(string nombre, int vidaInicial, int vidaActual, int fuerza, int poderMagico)
@@ -17,6 +18,7 @@ public class Mago : IPersonaje
         Fuerza=fuerza;
         PoderMagico=poderMagico;
         Elementos= new List<IElemento>();
+        ElementosMagicos = new List<IElementoMagico>();
     }
     public void AgregarElemento(IElemento elemento)
     {
