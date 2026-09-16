@@ -1,27 +1,57 @@
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 
 public class Enano
 {
     public string Nombre {get; set;}
+<<<<<<< HEAD
+    public int VidaInicial {get; set;}
     public int VidaActual{get; set;}
-    public List<dynamic> Elementos {get; set;}
+    public List<IElemento> Elementos {get; set;}
     public int Fuerza {get; set;}
     public int Resistencia {get; set;}
-    public Enano(string nombre, int vidaActual, int fuerza, int resistencia)
+    public Enano(string nombre, int vidaInicial, int vidaActual, int fuerza, int resistencia)
     {
         Nombre=nombre;
+        VidaInicial= vidaInicial;
         VidaActual=vidaActual;
         Fuerza=fuerza;
         Resistencia=resistencia;
-        Elementos= new List<dynamic>();
+        Elementos= new List<IElemento>();
     }
-    public void AgregarElemento(Escudo escudo)
+   public void AgregarElemento(IElemento elemento)
     {
-        Elementos.Add(escudo);
+        Elementos.Add(elemento);
     }
-    public void AgregarElemento(Martillo martillo)
+    public void QuitarElemento(IElemento elemento)
     {
-        Elementos.Add(martillo);
+        Elementos.Remove(elemento);
     }
-}
+    public void CambiarElemento(IElemento anterior, IElemento nuevo)
+    {
+        Elementos.Remove(anterior);
+        Elementos.Remove(nuevo);
+    }
+    public int AtaqueTotal()
+    {
+        return this.Fuerza;
+    }
+    public int Defensa()
+    {
+        return this.Resistencia;
+    }
+    public void Curar()
+    {
+        this.VidaActual=this.VidaInicial;
+    }
+    public void Atacar(IPersonaje personaje)
+    {
+        int total = personaje.VidaActual - this.Fuerza;
+        total = total - personaje.DefensaTotal();
+        personaje.VidaActual = total;
+    }
+    public void Combatir ()
+    {
+    }
+    }
