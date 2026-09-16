@@ -2,7 +2,7 @@ using System.Reflection.Metadata.Ecma335;
 
 public class Hechizo: IElementoMagico
 {
-    public string Name {get; set;}
+    public string Nombre {get; set;}
     public int Ataque {get; set;}
     public int Defensa {get; set;}
 
