@@ -10,10 +10,10 @@ public class LibroDeHechizo
 
     public void AddHechizo(Hechizo hechizo)
     {
-        Hechizos.Add(hechizo)
+        Hechizos.Add(hechizo);
     }
         public void RemoveHechizo(Hechizo hechizo)
     {
-        Hechizos.Remove(hechizo)
+        Hechizos.Remove(hechizo);
     }
 }
