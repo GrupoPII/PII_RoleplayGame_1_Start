@@ -1,60 +1,75 @@
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Reflection.Metadata.Ecma335;
 
 public class Elfo : IPersonaje
 {
-    public string Nombre {get; set;}
-    public int VidaInicial{get; set;}
-    public int VidaActual {get; set;}
-    public List<IElemento> Elementos {get; set;}
-    public int Fuerza {get; set;}
-    public int Resistencia {get; set ;}
-    public bool AyudarAOtros {get; set;}
-    public Elfo(string nombre, int vidaInicial, int vidaActual, int fuerza, bool ayudarAOtros, int resistencia)
+    public string Nombre { get; set; }
+    public int VidaInicial { get; set; }
+    public int VidaActual { get; set; }
+    public List<IElemento> Elementos { get; set; }
+    public int Fuerza { get; set; }
+    public int Resistencia { get; set; }
+    public bool AyudarAOtros { get; set; }
+
+    public Elfo(string nombre, int vidaInicial, int fuerza, int resistencia, bool ayudarAOtros)
     {
-        Nombre=nombre;
-        VidaInicial= vidaInicial;
-        VidaActual=vidaActual;
-        Fuerza=fuerza;
-        AyudarAOtros=ayudarAOtros;
-        Resistencia=resistencia;
-        Elementos= new List<IElemento>();
+        Nombre = nombre;
+        VidaInicial = vidaInicial;
+        VidaActual = vidaInicial; // al inicio la vida actual = inicial
+        Fuerza = fuerza;
+        Resistencia = resistencia;
+        AyudarAOtros = ayudarAOtros;
+        Elementos = new List<IElemento>();
     }
+
     public void AgregarElemento(IElemento elemento)
     {
         Elementos.Add(elemento);
     }
+
     public void QuitarElemento(IElemento elemento)
     {
         Elementos.Remove(elemento);
     }
+
     public void CambiarElemento(IElemento anterior, IElemento nuevo)
     {
-        Elementos.Remove(anterior);
-        Elementos.Remove(nuevo);
-    }
-    public int AtaqueTotal()
-    {
-        return this.Fuerza;
-    }
-    public int Defensa()
-    {
-        return this.Resistencia;
-    }
-    public void Curar()
-    {
-        this.VidaActual=this.VidaInicial;
-    }
-    public void Atacar(IPersonaje personaje)
-    {
-        int total = personaje.VidaActual - this.Fuerza;
-        total = total - personaje.DefensaTotal();
-        personaje.VidaActual = total;
-    }
-    public void Ayudar ()
-    {
-        
+        int index = Elementos.IndexOf(anterior);
+        if (index != -1)
+        {
+            Elementos[index] = nuevo;
+        }
     }
 
+    public int AtaqueTotal()
+    {
+        return Fuerza;
+    }
+
+    public int DefensaTotal()
+    {
+        return Resistencia;
+    }
+
+    public void Curar()
+    {
+        VidaActual = VidaInicial;
+    }
+
+    public void Atacar(IPersonaje personaje)
+    {
+        int daño = this.AtaqueTotal() - personaje.DefensaTotal();
+        if (daño < 0) daño = 0;
+        personaje.VidaActual -= daño;
+        if (personaje.VidaActual < 0) personaje.VidaActual = 0;
+    }
+
+    public void Ayudar(IPersonaje aliado)
+    {
+        if (AyudarAOtros)
+        {
+            aliado.VidaActual += 10; // ejemplo: cura 10 puntos
+            if (aliado.VidaActual > aliado.VidaInicial)
+                aliado.VidaActual = aliado.VidaInicial;
+        }
+    }
 }

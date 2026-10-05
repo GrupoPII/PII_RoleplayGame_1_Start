@@ -1,9 +1,8 @@
-public interface IElemento
+public interface IElementoMagico
 {
-    string Name {get; set;}
+    string Nombre {get; set;}
     int Ataque {get; set;}
     int Defensa {get; set;}
     int ValorAtaque();
     int ValorDefensa();
-
 }
