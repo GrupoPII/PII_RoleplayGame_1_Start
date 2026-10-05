@@ -1,56 +1,29 @@
-using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.InteropServices;
-
-public class Enano //holasoy vale haciendo un cambio
+public class Enano : Heroe
 {
-    public string Nombre {get; set;}
-    public int VidaInicial {get; set;}
-    public int VidaActual{get; set;}
-    public List<IElemento> Elementos {get; set;}
-    public int Fuerza {get; set;}
-    public int Resistencia {get; set;}
-    public Enano(string nombre, int vidaInicial, int vidaActual, int fuerza, int resistencia)
+    public int Resistencia { get; set; }
+
+    public Enano(
+        string nombre,
+        int vidaInicial,
+        int fuerza,
+        int resistencia)
+        : base(nombre, vidaInicial, fuerza)
     {
-        Nombre=nombre;
-        VidaInicial= vidaInicial;
-        VidaActual=vidaActual;
-        Fuerza=fuerza;
-        Resistencia=resistencia;
-        Elementos= new List<IElemento>();
+        Resistencia = resistencia;
     }
-   public void AgregarElemento(IElemento elemento)
+
+    public override int AtaqueTotal()
     {
-        Elementos.Add(elemento);
+        return Fuerza;
     }
-    public void QuitarElemento(IElemento elemento)
+
+    public override int DefensaTotal()
     {
-        Elementos.Remove(elemento);
+        return Resistencia;
     }
-    public void CambiarElemento(IElemento anterior, IElemento nuevo)
+
+    public void Combatir()
     {
-        Elementos.Remove(anterior);
-        Elementos.Remove(nuevo);
+        // comportamiento propio del enano
     }
-    public int AtaqueTotal()
-    {
-        return this.Fuerza;
-    }
-    public int Defensa()
-    {
-        return this.Resistencia;
-    }
-    public void Curar()
-    {
-        this.VidaActual=this.VidaInicial;
-    }
-    public void Atacar(IPersonaje personaje)
-    {
-        int total = personaje.VidaActual - this.Fuerza;
-        total = total - personaje.DefensaTotal();
-        personaje.VidaActual = total;
-    }
-    public void Combatir ()
-    {
-    }
-    }
+}
