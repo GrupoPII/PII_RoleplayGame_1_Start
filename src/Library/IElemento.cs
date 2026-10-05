@@ -1,4 +1,4 @@
-public interface IElemento
+public abstract class Elemento
 {
     string Name {get; set;}
     int Ataque {get; set;}
